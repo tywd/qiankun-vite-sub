@@ -8,7 +8,10 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview --port 8082",
     "clean": "rm -rf dist node_modules/.vite",
-    "build:analyze": "vite build --mode analyze"
+    "build:analyze": "vite build --mode analyze",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
@@ -30,6 +33,7 @@
     "nanoid": "^5.1.6",
     "sass": "^1.93.2",
     "sass-loader": "^16.0.5",
-    "style-loader": "^4.0.0"
+    "style-loader": "^4.0.0",
+    "vitepress": "^1.6.4"
   }
 }
