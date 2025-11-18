@@ -4,8 +4,12 @@ import { resolve } from 'path'
 import { name } from './package.json'
 import qiankun from 'vite-plugin-qiankun'
 
+// 获取基础路径，Vercel部署时使用环境变量，本地开发时使用默认值
+const base = process.env.BASE_PATH || '/';
+
 // https://vite.dev/config/
 export default defineConfig({
+  base: base, // 设置基础路径，确保在Vercel上正确部署
   plugins: [
     vue(),
     qiankun(name, {
