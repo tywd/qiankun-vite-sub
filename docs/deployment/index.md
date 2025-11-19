@@ -88,3 +88,4 @@
 
 - [Vercel 部署](./vercel.md): 详细介绍如何在 Vercel 上部署子应用
 - [独立部署配置](./independent.md): 介绍子应用的独立部署配置
+- [故障排除与维护](./troubleshooting.md): 部署问题解决方案和维护指南
