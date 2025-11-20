@@ -1,7 +1,6 @@
+import { baseUrl } from '@/micro'
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
-import { isQiankunEnv } from '@/micro'
 
 // 动态导入所有视图组件
 const views = import.meta.glob('../views/**/*.vue')
@@ -28,7 +27,7 @@ Object.keys(views).forEach((key) => {
 })
 
 const router = createRouter({
-  history: createWebHistory(isQiankunEnv ? '/qiankun-vite-sub' : '/'),
+  history: createWebHistory(baseUrl),
   routes
 })
 
