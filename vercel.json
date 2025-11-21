@@ -1,45 +1,35 @@
 {
-  "headers": [
+  "builds": [
     {
-      "source": "/static/:path*",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "auto"
-        }
-      ]
-    },
-    {
-      "source": "/fonts/:path*",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "font/woff2"
-        }
-      ]
-    },
-    {
-      "source": "/:path*",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "https://qiankun-vite-main.vercel.app"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "X-Requested-With, Content-Type"
-        }
-      ]
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/:path*",
-      "destination": "/index.html"
+      "src": "/sub-app/assets/(.*)",
+      "headers": {
+        "cache-control": "public,max-age=31536000,immutable"
+      },
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "headers": {
+        "cache-control": "public,max-age=31536000,immutable"
+      },
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/sub-app/(.*)",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
