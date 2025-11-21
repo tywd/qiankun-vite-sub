@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
     })
   ],
   define: {
-    'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV),
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   },
   server: {
     port: env.PORT ? parseInt(env.PORT, 10) : 8081,
