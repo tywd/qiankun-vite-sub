@@ -44,11 +44,11 @@ html, body {
 
 // Sidebar menu item
 .el-sub-menu .el-menu-item {
-  min-width: 210px !important;
-  background-color: #1f2d3d !important;
+  min-width: $sidebar-width !important;
+  background-color: $sidebar-bg-color !important;
 
   &:hover {
-    background-color: #001528 !important;
+    background-color: $sidebar-hover-bg-color !important;
   }
 }
 

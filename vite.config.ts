@@ -51,6 +51,13 @@ export default defineConfig(({ mode }) => {
     chunkSizeWarningLimit: 500,
     sourcemap: false,
     minify: 'terser'
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/variables.scss";`
+      }
+    }
   }
   }
 })
