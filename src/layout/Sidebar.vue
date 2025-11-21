@@ -37,7 +37,7 @@ watch(route, () => {
 }, { immediate: true })
 </script>
 
-<style scoped>
+<style>
 .sidebar-container {
   height: 100%;
 }
@@ -47,19 +47,19 @@ watch(route, () => {
   height: 100%;
 }
 
-:deep(.el-menu-item) {
+.el-menu-item {
   background-color: #001529 !important;
 }
 
-:deep(.el-menu-item:hover) {
+.el-menu-item:hover {
   background-color: #001f3f !important;
 }
 
-:deep(.el-sub-menu .el-menu-item) {
+.el-sub-menu .el-menu-item {
   background-color: #000c17 !important;
 }
 
-:deep(.el-sub-menu .el-menu-item:hover) {
+.el-sub-menu .el-menu-item:hover {
   background-color: #001f3f !important;
 }
 </style>

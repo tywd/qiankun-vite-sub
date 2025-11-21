@@ -73,7 +73,7 @@ const removeTab = (targetName: string) => {
 }
 </script>
 
-<style scoped>
+<style>
 .tabs-container {
   background: #fff;
   border-bottom: 1px solid #e4e7ed;
@@ -83,15 +83,15 @@ const removeTab = (targetName: string) => {
   padding: 0 20px;
 }
 
-:deep(.el-tabs__header) {
+.el-tabs__header {
   margin: 0;
 }
 
-:deep(.el-tabs__nav) {
+.el-tabs__nav {
   border: none;
 }
 
-:deep(.el-tabs__item) {
+.el-tabs__item {
   height: 40px;
   line-height: 40px;
   box-sizing: border-box;

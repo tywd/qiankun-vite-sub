@@ -8,7 +8,7 @@
 import BasicLayout from '@/layout/BasicLayout.vue';
 </script>
 
-<style scoped>
+<style>
 * {
   margin: 0;
   padding: 0;

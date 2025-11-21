@@ -37,7 +37,7 @@ import Sidebar from './Sidebar.vue'
 import TabsView from './TabsView.vue'
 </script>
 
-<style scoped>
+<style>
 .layout-container {
   height: 100vh;
 }
