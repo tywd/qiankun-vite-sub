@@ -1,4 +1,5 @@
 {
+  "version": 1,
   "builds": [
     {
       "src": "package.json",
@@ -10,15 +11,16 @@
   ],
   "routes": [
     {
-      "src": "/sub-app/(.*)",
-      "dest": "/$1"
+      "src": "^/sub-app/assets/(.*\\.(js|css|mjs|wasm|json|ico|png|jpg|jpeg|gif|svg))$",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable",
+        "content-type": "application/javascript"
+      },
+      "dest": "/sub-app/assets/$1"
     },
     {
-      "src": "/assets/(.*)",
-      "headers": {
-        "cache-control": "public,max-age=31536000,immutable"
-      },
-      "dest": "/assets/$1"
+      "src": "^/sub-app/(.*)$",
+      "dest": "/sub-app/index.html"
     },
     {
       "src": "/(.*)",
