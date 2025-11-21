@@ -25,3 +25,35 @@ html, body {
   --el-color-danger: #f56c6c;
   --el-color-info: #909399;
 }
+
+// Element Plus custom styles
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+// Sidebar menu item
+.el-sub-menu .el-menu-item {
+  min-width: 210px !important;
+  background-color: #1f2d3d !important;
+
+  &:hover {
+    background-color: #001528 !important;
+  }
+}
+
+// Tabs view
+.tabs-view-container {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
+  background: #fff;
+}

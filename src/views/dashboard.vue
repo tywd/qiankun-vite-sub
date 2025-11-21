@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
-    <h1>子应用仪表盘</h1>
-    <p>欢迎使用 qiankun 微前端子应用</p>
+    <h1>Dashboard</h1>
+    <p>Welcome to the qiankun-vite-sub application.</p>
     <div class="features">
       <el-card class="feature-card">
         <template #header>
