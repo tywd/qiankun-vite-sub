@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   
   return {
-    base: env.BASE_PATH || '/', // 设置基础路径，确保在Vercel上正确部署
+  base: env.BASE_PATH || '/', // 设置基础路径，确保在Vercel上正确部署
   plugins: [
     vue(),
     qiankun('sub-app', {
