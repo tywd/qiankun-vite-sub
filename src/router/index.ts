@@ -16,6 +16,12 @@ const baseRoutes: RouteRecordRaw[] = [
     name: 'dashboard',
     component: () => import('@/views/dashboard.vue'),
     meta: { title: '子应用看板' }
+  },
+  {
+    // 兜底路由：处理所有未匹配的路径
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    redirect: '/dashboard'
   }
 ];
 

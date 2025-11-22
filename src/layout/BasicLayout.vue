@@ -30,7 +30,10 @@ const toggleSidebar = () => {
     menuStore.toggleCollapsed();
 };
 </script>
+
 <style scoped lang="scss">
+@use "@/styles/variables.scss" as *;
+
 .basic-layout {
     height: 100vh;
     display: flex;
@@ -80,7 +83,7 @@ const toggleSidebar = () => {
 
     // 子应用样式隔离
     :deep(*) {
-        font-family: inherit;
+        font-family: $font-family;
     }
 }
 </style>

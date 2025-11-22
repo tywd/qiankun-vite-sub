@@ -21,6 +21,8 @@ const breadcrumbItems = computed(() => {
 </script>
 
 <style scoped lang="scss">
+@use "@/styles/variables.scss" as *;
+
 .breadcrumb {
   :deep(.el-breadcrumb__item) {
     .el-breadcrumb__inner {
@@ -30,7 +32,7 @@ const breadcrumbItems = computed(() => {
         color: #00000073;
         
         &:hover {
-          color: #1890ff;
+          color: $primary-color;
         }
       }
     }

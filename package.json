@@ -33,17 +33,17 @@
     "vue-tsc": "^2.0.29"
   },
   "devDependencies": {
+    "commitlint": "^17.0.0",
     "css-loader": "^7.1.2",
+    "eslint": "^8.0.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.0",
     "nanoid": "^5.1.6",
+    "prettier": "^2.0.0",
     "sass": "^1.93.2",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
-    "vitepress": "^1.6.4",
-    "eslint": "^8.0.0",
-    "prettier": "^2.0.0",
     "stylelint": "^14.0.0",
-    "commitlint": "^17.0.0"
+    "vitepress": "^1.6.4"
   }
 }

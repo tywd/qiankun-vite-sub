@@ -52,12 +52,10 @@ export default defineConfig(({ mode }) => {
     sourcemap: false,
     minify: 'terser'
   },
-  // css: {
-  //   preprocessorOptions: {
-  //     scss: {
-  //       additionalData: `@import "@/styles/variables.scss";`
-  //     }
-  //   }
-  // }
+  css: {
+    modules: {
+      generateScopedName: '[name]__[local]___[hash:base64:5]'
+    }
+  }
   }
 })

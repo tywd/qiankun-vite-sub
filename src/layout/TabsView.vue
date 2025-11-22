@@ -154,6 +154,8 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="scss">
+@use "@/styles/variables.scss" as *;
+
 .tabs-view {
   height: 100%;
   display: flex;
@@ -190,11 +192,11 @@ onUnmounted(() => {
         
         &.active {
           background-color: #e6f7ff;
-          color: #1890ff;
+          color: $primary-color;
           
           .tab-close:hover {
             background-color: #c6e2ff;
-            color: #1890ff;
+            color: $primary-color;
           }
         }
         

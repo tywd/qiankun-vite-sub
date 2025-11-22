@@ -54,8 +54,10 @@ const handleMenuSelect = (index: string) => {
 </script>
 
 <style scoped lang="scss">
+@use "@/styles/variables.scss" as *;
+
 .sidebar {
-  background-color: #001529;
+  background-color: $sidebar-bg-color;
   transition: width 0.3s;
   
   .logo {
@@ -82,20 +84,20 @@ const handleMenuSelect = (index: string) => {
   
   .sidebar-menu {
     border: none;
-    background-color: #001529;
+    background-color: $sidebar-bg-color;
     
     :deep(.el-menu-item),
     :deep(.el-sub-menu__title) {
       color: #bfbfbf;
       
       &:hover {
-        background-color: #000c17;
+        background-color: $sidebar-hover-bg-color;
         color: #fff;
       }
     }
     
     :deep(.el-menu-item.is-active) {
-      background-color: #1890ff;
+      background-color: $primary-color;
       color: #fff;
     }
     
