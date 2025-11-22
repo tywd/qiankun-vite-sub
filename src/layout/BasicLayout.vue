@@ -1,73 +1,86 @@
 <template>
-  <el-container class="layout-container">
-    <!-- <el-header class="layout-header">
-      <div class="header-left">
-        <h2>子应用管理系统</h2>
-      </div>
-      <div class="header-right">
-        <el-dropdown>
-          <el-avatar :size="32" icon="UserFilled" />
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item>退出登录</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </div>
-    </el-header> -->
-    
-    <el-container>
-      <el-aside class="layout-sidebar" width="200px">
-        <Sidebar />
-      </el-aside>
-      
-      <el-main class="layout-main">
-        <TabsView />
-        <div class="main-content">
-          <router-view />
+    <div class="basic-layout">
+        <div class="main-content-area">
+            <!-- 左侧侧边栏 -->
+            <Sidebar />
+            <!-- 右侧内容区域 -->
+            <main class="content-area">
+                <div class="breadcrumb-container">
+                    <el-icon class="collapse-icon" @click="toggleSidebar">
+                        <Expand v-if="menuStore.collapsed" />
+                        <Fold v-else />
+                    </el-icon>
+                    <Breadcrumb class="breadcrumb" />
+                </div>
+                <TabsView />
+            </main>
         </div>
-      </el-main>
-    </el-container>
-  </el-container>
+    </div>
 </template>
 
 <script setup lang="ts">
-import Sidebar from './Sidebar.vue'
-import TabsView from './TabsView.vue'
+import Sidebar from './Sidebar.vue';
+import Breadcrumb from '@/components/Breadcrumb.vue';
+import TabsView from './TabsView.vue';
+import { useMenuStore } from '../stores/menu';
+import { Expand, Fold } from '@element-plus/icons-vue';
+
+const menuStore = useMenuStore();
+const toggleSidebar = () => {
+    menuStore.toggleCollapsed();
+};
 </script>
-
-<style>
-.layout-container {
-  height: 100vh;
+<style scoped lang="scss">
+.basic-layout {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f2f5;
 }
 
-.layout-header {
-  background: #fff;
-  border-bottom: 1px solid #e4e7ed;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+.main-content-area {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
 }
 
-.header-left h2 {
-  margin: 0;
-  color: #409eff;
+.content-area {
+    flex: 1;
+    background-color: #fff;
+    height: 100%;
+    overflow: auto;
+    
+    .breadcrumb-container {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        padding: 10px 16px;
+        border-bottom: 1px solid #f0f0f0;
+        
+        .collapse-icon {
+            margin-right: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #666;
+            
+            &:hover {
+                color: #1890ff;
+            }
+        }
+        
+        .breadcrumb {
+            flex: 1;
+        }
+    }
 }
 
-.layout-sidebar {
-  background: #001529;
-  border-right: 1px solid #e4e7ed;
-}
+.subapp-container {
+    width: 100%;
+    height: 100%;
 
-.layout-main {
-  padding: 0;
-}
-
-.main-content {
-  padding: 20px;
-  height: calc(100% - 40px);
-  overflow: auto;
+    // 子应用样式隔离
+    :deep(*) {
+        font-family: inherit;
+    }
 }
 </style>

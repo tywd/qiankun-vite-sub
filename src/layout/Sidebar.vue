@@ -1,65 +1,107 @@
 <template>
-  <div class="sidebar-container">
+  <el-aside :width="sidebarWidth" class="sidebar">
     <el-menu
-      :default-active="activeMenu"
-      class="sidebar-menu"
-      background-color="#001529"
-      text-color="#fff"
-      active-text-color="#409eff"
+      :default-active="menuStore.activeMenu"
+      :collapse="menuStore.collapsed"
+      :unique-opened="true"
       router
+      class="sidebar-menu"
+      @select="handleMenuSelect"
     >
-      <el-menu-item index="/dashboard">
-        <el-icon><House /></el-icon>
-        <span>仪表盘</span>
-      </el-menu-item>
-      
-      <el-sub-menu index="project">
-        <template #title>
-          <el-icon><Folder /></el-icon>
-          <span>项目管理</span>
-        </template>
-        <el-menu-item index="/project/virtual-list">虚拟列表</el-menu-item>
-      </el-sub-menu>
+      <template v-for="menu in menuStore.menus" :key="menu.id">
+        <!-- 有子菜单的项 -->
+        <el-sub-menu v-if="menu.children" :index="menu.id">
+          <template #title>
+            <el-icon v-if="menu.icon">
+              <component :is="menu.icon" />
+            </el-icon>
+            <span>{{ menu.title }}</span>
+          </template>
+          
+          <el-menu-item 
+            v-for="child in menu.children" 
+            :key="child.id" 
+            :index="child.id"
+            :route="child.path"
+          >
+            {{ child.title }}
+          </el-menu-item>
+        </el-sub-menu>
+        
+        <!-- 没有子菜单的项 -->
+        <el-menu-item v-else :index="menu.id" :route="menu.path">
+          <el-icon v-if="menu.icon">
+            <component :is="menu.icon" />
+          </el-icon>
+          <span>{{ menu.title }}</span>
+        </el-menu-item>
+      </template>
     </el-menu>
-  </div>
+  </el-aside>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { House, Folder } from '@element-plus/icons-vue'
+import { computed } from 'vue';
+import { useMenuStore } from '../stores/menu';
 
-const route = useRoute()
-const activeMenu = ref(route.path)
+const menuStore = useMenuStore();
 
-watch(route, () => {
-  activeMenu.value = route.path
-}, { immediate: true })
+const sidebarWidth = computed(() => menuStore.collapsed ? '64px' : '200px');
+
+const handleMenuSelect = (index: string) => {
+  menuStore.setActiveMenu(index);
+};
 </script>
 
-<style>
-.sidebar-container {
-  height: 100%;
-}
-
-.sidebar-menu {
-  border-right: none;
-  height: 100%;
-}
-
-.el-menu-item {
-  background-color: #001529 !important;
-}
-
-.el-menu-item:hover {
-  background-color: #001f3f !important;
-}
-
-.el-sub-menu .el-menu-item {
-  background-color: #000c17 !important;
-}
-
-.el-sub-menu .el-menu-item:hover {
-  background-color: #001f3f !important;
+<style scoped lang="scss">
+.sidebar {
+  background-color: #001529;
+  transition: width 0.3s;
+  
+  .logo {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #002140;
+    padding: 0 16px;
+    
+    .logo-img {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .logo-text {
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      margin-left: 8px;
+      white-space: nowrap;
+    }
+  }
+  
+  .sidebar-menu {
+    border: none;
+    background-color: #001529;
+    
+    :deep(.el-menu-item),
+    :deep(.el-sub-menu__title) {
+      color: #bfbfbf;
+      
+      &:hover {
+        background-color: #000c17;
+        color: #fff;
+      }
+    }
+    
+    :deep(.el-menu-item.is-active) {
+      background-color: #1890ff;
+      color: #fff;
+    }
+    
+    :deep(.el-icon) {
+      color: inherit;
+    }
+  }
 }
 </style>

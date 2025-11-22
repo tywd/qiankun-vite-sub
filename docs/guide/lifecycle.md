@@ -143,3 +143,12 @@ const router = createRouter({
 // 路由基础路径：在qiankun中时使用主应用配置的activeRule
 export const baseUrl = isQiankunEnv ? '/sub-app' : '/';
 ```
+
+## 样式隔离
+
+为避免子应用与主应用或其他子应用之间的样式冲突，采用了以下策略：
+
+1. **CSS Modules**：在 Vite 配置中启用 CSS Modules，为类名生成唯一哈希值
+2. **Scoped CSS**：在 Vue 组件中使用 scoped CSS，确保样式只作用于当前组件
+3. **命名规范**：采用 BEM 命名规范，确保类名的唯一性
+4. **详细方案**：请参考 [样式隔离方案](/guide/style-isolation) 文档

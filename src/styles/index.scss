@@ -43,14 +43,14 @@ html, body {
 }
 
 // Sidebar menu item
-.el-sub-menu .el-menu-item {
-  min-width: $sidebar-width !important;
-  background-color: $sidebar-bg-color !important;
+// .el-sub-menu .el-menu-item {
+//   min-width: $sidebar-width !important;
+//   background-color: $sidebar-bg-color !important;
 
-  &:hover {
-    background-color: $sidebar-hover-bg-color !important;
-  }
-}
+//   &:hover {
+//     background-color: $sidebar-hover-bg-color !important;
+//   }
+// }
 
 // Tabs view
 .tabs-view-container {

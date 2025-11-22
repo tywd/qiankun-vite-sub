@@ -19,7 +19,9 @@ export default defineConfig({
           items: [
             { text: '快速开始', link: '/guide/index' },
             { text: '主应用配置', link: '/guide/main-app-config' },
-            { text: '生命周期实现', link: '/guide/lifecycle' }
+            { text: '生命周期实现', link: '/guide/lifecycle' },
+            { text: '样式隔离方案', link: '/guide/style-isolation' },
+            { text: '样式隔离总结', link: '/guide/style-isolation-summary' }
           ]
         }
       ],

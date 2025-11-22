@@ -1,5 +1,83 @@
-// Utility functions
+import { nanoid } from 'nanoid';
 
+// 获取所有路由
+export const getAllRoute = () => {
+    const routes = [
+        {
+            id: nanoid(),
+            title: '项目模拟',
+            path: '/project',
+            name: 'project',
+            icon: 'User',
+            level: 1,
+            meta: { title: '项目模拟' },
+            children: [
+                {
+                    id: nanoid(),
+                    title: '虚拟列表',
+                    path: '/project/virtual-list',
+                    name: 'virtualList',
+                    icon: 'List',
+                    level: 2,
+                    parentId: nanoid(),
+                    meta: { title: '虚拟列表' }
+                }
+            ]
+        },
+    ]
+    return routes
+}
+
+// 处理原始route路径为 vue-router可用的格式
+export const transformRoutes = (routes: any[]): any[] => {
+    // 使用 import.meta.glob 预加载所有视图组件，避免动态导入路径问题
+    const viewModules = import.meta.glob('@/views/**/*.vue');
+
+    const newRoutes: any[] = routes.map(route => {
+        const transformd: any = {
+            path: route.path,
+            name: route.name,
+            meta: route.meta
+        }
+        if (route.children && route.children.length > 0) {
+            transformd.children = transformRoutes(route.children);
+        } else {
+            // 检查组件是否存在
+            if (viewModules[`/src/views${route.path}.vue`]) {
+                transformd.component = viewModules[`/src/views${route.path}.vue`];
+            } else {
+                // 如果组件不存在，提供一个默认组件并添加错误处理
+                transformd.component = () => import('@/views/index.vue').catch(() => {
+                    return Promise.resolve({
+                        template: '<div>页面开发中...</div>'
+                    });
+                });
+            }
+        }
+        return transformd;
+    })
+    console.log('newRoutes', newRoutes)
+    return newRoutes;
+}
+
+// 处理原始route为菜单格式
+export const transformMenu = (routes: any[]): any[] => {
+    const menu: any[] = routes.map(route => {
+        const transformd: any = {
+            id: route.id,
+            title: route.title,
+            icon: route.icon,
+            level: route.level,
+            path: route.path,
+            parentId: route.parentId
+        }
+        if (route.children && route.children.length > 0) {
+            transformd.children = transformMenu(route.children);
+        }
+        return transformd
+    })
+    return menu;
+}
 /**
  * Parse the time to string
  * @param {(Object|string|number)} time
