@@ -22,3 +22,10 @@ import BasicLayout from '@/layout/BasicLayout.vue';
   overflow: hidden;
 }
 </style>
+
+<style scoped>
+/* 确保在微前端环境中样式正确应用 */
+#sub-app {
+  height: 100%;
+}
+</style>

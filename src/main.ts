@@ -14,6 +14,19 @@ let app: VueApp<Element> | null = null
 // 创建Pinia实例
 const pinia = createPinia()
 
+// 添加一个函数来确保样式正确加载
+function ensureStylesLoaded() {
+  // 检查是否已经存在样式链接
+  const existingLink = document.querySelector('link[href*="index-Ce3oaff2.css"]');
+  if (!existingLink) {
+    // 动态添加样式链接
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = './assets/index-Ce3oaff2.css';
+    document.head.appendChild(link);
+  }
+}
+
 function initApp(props: any = {}) {
   const { container } = props
   
@@ -56,6 +69,11 @@ function initApp(props: any = {}) {
   if (container && containerElement) {
     // 添加一个类名来标识微前端环境
     containerElement.classList.add('sub-app-container');
+    
+    // 确保样式正确加载
+    setTimeout(() => {
+      ensureStylesLoaded();
+    }, 100);
   }
   
   app.mount(containerElement)
