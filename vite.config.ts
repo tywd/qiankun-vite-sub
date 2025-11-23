@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => {
   
   // 根据环境设置base路径
   const isProd = mode === 'production';
-  const basePath = isProd ? (env.BASE_PATH || '/') : '/';
+  const basePath = isProd ? (env.BASE_PATH || '/sub-app/') : '/';
   
   return {
   base: basePath, // 设置基础路径，确保在Vercel上正确部署
