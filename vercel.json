@@ -29,7 +29,7 @@
     },
     {
       "src": "/sub-app/(.*)",
-      "dest": "/$1"
+      "dest": "/index.html"
     },
     {
       "src": "/(.*)",
