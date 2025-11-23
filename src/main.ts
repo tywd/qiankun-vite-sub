@@ -51,6 +51,13 @@ function initApp(props: any = {}) {
   }
   
   console.log('系统管理应用挂载容器:', containerElement)
+  
+  // 在微前端环境中确保样式正确应用
+  if (container && containerElement) {
+    // 添加一个类名来标识微前端环境
+    containerElement.classList.add('sub-app-container');
+  }
+  
   app.mount(containerElement)
   
   // 添加路由就绪检查

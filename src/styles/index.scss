@@ -19,6 +19,15 @@ html, body {
   height: 100%;
 }
 
+// 微前端环境下的容器样式
+#micro-app-container {
+  height: 100%;
+  
+  #app {
+    height: 100%;
+  }
+}
+
 // Element Plus custom styles
 :root {
   --el-color-primary: $primary-color;

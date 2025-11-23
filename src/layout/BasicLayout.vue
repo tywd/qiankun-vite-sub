@@ -77,13 +77,25 @@ const toggleSidebar = () => {
     }
 }
 
-.subapp-container {
+// 为微前端环境添加额外的样式支持
+:global(.sub-app-container) {
     width: 100%;
     height: 100%;
 
     // 子应用样式隔离
     :deep(*) {
         font-family: $font-family;
+    }
+}
+
+// 确保在微前端环境中样式正确应用
+:global(#micro-app-container) {
+    .basic-layout {
+        height: 100%;
+    }
+    
+    .main-content-area {
+        height: calc(100% - 60px); // 减去可能的顶部高度
     }
 }
 </style>

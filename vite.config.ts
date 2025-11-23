@@ -55,6 +55,12 @@ export default defineConfig(({ mode }) => {
   css: {
     modules: {
       generateScopedName: '[name]__[local]___[hash:base64:5]'
+    },
+    // 确保在生产环境中不丢失CSS
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/variables.scss" as *;`
+      }
     }
   }
   }
