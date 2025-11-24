@@ -22,6 +22,10 @@ export default defineConfig(({ mode }) => {
   ],
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    // 添加Node.js全局变量的polyfill
+    global: 'globalThis',
+    // 添加Web API的polyfill
+    File: 'class File {}',
   },
   server: {
     port: env.PORT ? parseInt(env.PORT, 10) : 8081,
