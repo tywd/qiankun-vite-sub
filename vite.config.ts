@@ -24,8 +24,6 @@ export default defineConfig(({ mode }) => {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     // 添加Node.js全局变量的polyfill
     global: 'globalThis',
-    // 添加Web API的polyfill
-    File: 'class File {}',
   },
   server: {
     port: env.PORT ? parseInt(env.PORT, 10) : 8081,
@@ -41,7 +39,9 @@ export default defineConfig(({ mode }) => {
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
+      '@': resolve(__dirname, 'src'),
+      // 添加undici别名来解决构建问题
+      'undici': resolve(__dirname, 'undici-shim.js')
     }
   },
   build: {
