@@ -54,7 +54,12 @@ export default defineConfig(({ mode }) => {
     cssCodeSplit: true,
     chunkSizeWarningLimit: 500,
     sourcemap: false,
-    minify: 'terser'
+    minify: 'terser',
+    // 添加这个配置来解决undici相关的问题
+    commonjsOptions: {
+      include: [/node_modules/],
+      transformMixedEsModules: true
+    }
   },
   css: {
     modules: {
@@ -66,6 +71,11 @@ export default defineConfig(({ mode }) => {
         additionalData: `@use "@/styles/variables.scss" as *;`
       }
     }
+  },
+  // 添加这个配置来解决undici相关的问题
+  optimizeDeps: {
+    include: ['vue', 'vue-router', 'element-plus', '@element-plus/icons-vue'],
+    exclude: ['undici']
   }
   }
 })
