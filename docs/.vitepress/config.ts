@@ -30,6 +30,7 @@ export default defineConfig({
           text: '部署说明',
           items: [
             { text: 'Vercel 部署', link: '/deployment/vercel' },
+            { text: 'Vercel 部署问题修复指南', link: '/deployment/troubleshooting' },
             { text: '独立部署', link: '/deployment/standalone' },
             { text: '部署检查清单', link: '/deployment/checklist' }
           ]

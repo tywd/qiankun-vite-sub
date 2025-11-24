@@ -5,6 +5,7 @@
 ## 部署方式
 
 - [Vercel 部署](./vercel.md): 详细介绍如何将本子应用部署到 Vercel 平台
+- [Vercel 部署问题修复指南](./troubleshooting.md): 解决 Vercel 部署过程中遇到的常见问题
 - [独立部署](./standalone.md): 详细介绍如何将本子应用独立部署到服务器
 
 ## 环境变量配置
