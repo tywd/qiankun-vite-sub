@@ -8,12 +8,12 @@
 
 1. 确保已安装 CLI 工具：
    ```bash
-   npm install -g @tyteam/team-cli
+   npm install -g @tywd/cli
    ```
 
 2. 使用 CLI 创建项目：
    ```bash
-   team-cli create my-project
+   tywd create
    ```
    在交互式界面中选择 `qiankun-vite-sub` 模板
 
